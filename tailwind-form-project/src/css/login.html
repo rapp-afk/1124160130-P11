@@ -1,12 +1,114 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Login dengan Tailwind CSS</title>
-    <link href="../dist/output.css" rel="stylesheet">
+    <link href="/tailwind-form-project/dist/output.css" rel="stylesheet">
 </head>
-<body>
-<!-- Konten akan ditambahkan nanti -->
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md">
+<!-- Toggle Dark Mode -->
+        <div class="flex justify-end mb-4">
+            <button id="darkModeToggle" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center space-x-2">
+                <span class="dark:hidden">🌙</span>
+                <span class="hidden dark:block">☀️</span>
+                <span class="dark:hidden">Dark Mode</span>
+                <span class="hidden dark:block">Light Mode</span>
+            </button>
+        </div>
+
+<!-- Form Login Card -->
+        <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 transition-colors duration-300">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white text-center">Login</h2>
+
+            <form>
+<!-- Email Input -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="email">
+                        Email
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 dark:text-white leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:border-gray-600 dark:bg-gray-700"
+                        id="email"
+                        type="email"
+                        placeholder="email@example.com"
+                    >
+                </div>
+
+<!-- Password Input -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="password">
+                        Password
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 dark:text-white leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:border-gray-600 dark:bg-gray-700"
+                        id="password"
+                        type="password"
+                        placeholder="********"
+                    >
+                </div>
+
+<!-- Remember Me Checkbox -->
+                <div class="mb-6 flex items-center">
+                    <input
+                        type="checkbox"
+                        id="remember"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-400 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+                    >
+                    <label for="remember" class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Ingat saya
+                    </label>
+                </div>
+
+<!-- Login Button -->
+                <div class="flex items-center justify-between">
+                    <button
+                        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-300"
+                        type="button"
+                    >
+                        Login
+                    </button>
+                </div>
+
+<!-- Forgot Password Link -->
+                <div class="text-center mt-4">
+                    <a href="#" class="text-sm text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                        Lupa password?
+                    </a>
+                </div>
+            </form>
+        </div>
+
+<!-- Register Link -->
+        <p class="text-center text-gray-600 dark:text-gray-400 text-sm">
+            Belum punya akun?
+            <a href="#" class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                Daftar disini
+            </a>
+        </p>
+    </div>
+
+    <script>
+// Script untuk toggle dark mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+
+// Cek preferensi dark mode dari localStorage
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.documentElement.classList.add('dark');
+        }
+
+// Event listener untuk toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+
+// Simpan preferensi ke localStorage
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', null);
+            }
+        });
+    </script>
 </body>
 </html>
